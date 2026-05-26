@@ -1,6 +1,7 @@
 from crud import *
 import login
 import relatorio
+from utils.data import formatar_data
 
 
 def menu_empresa():
@@ -30,8 +31,8 @@ def menu_empresa():
             emp_cidade = input("Cidade: ")
             emp_estado = input("Estado (UF): ")
             emp_pais = input("País: ")
-            emp_data_criacao = input("Data de criação (YYYY-MM-DD): ")
-
+            emp_data_criacao = formatar_data(
+                input("Data de criação (dd/mm/aaaa): "))
             try:
                 cadastrar_empresa(emp_nome, emp_cnpj, emp_email, emp_tel, emp_cep, emp_rua,
                                   emp_numero, emp_complemento, emp_bairro, emp_cidade, emp_estado, emp_pais, emp_data_criacao)
@@ -156,7 +157,8 @@ def menu_produto():
             pro_descricao = input("Descrição do produto: ")
             pro_marca = input("Marca do produto: ")
             pro_preco = input("Preço do produto: ").replace(",", ".")
-            pro_data_validade = input("Data de validade (YYYY-MM-DD): ")
+            pro_data_validade = formatar_data(
+                input("Data de validade (dd/mm/aaaa): "))
 
             try:
                 cadastrar_produto(pro_nome, pro_descricao, pro_marca, pro_preco, pro_data_validade, emp_id)
@@ -184,7 +186,8 @@ def menu_produto():
                 pro_descricao = input("Nova descrição: ")
                 pro_marca = input("Nova marca: ")
                 pro_preco = input("Novo preço: ").replace(",", ".")
-                pro_data_validade = input("Nova data de validade (YYYY-MM-DD): ")
+                pro_data_validade = formatar_data(
+                input("Data de validade (dd/mm/aaaa): "))
                 atualizar_produto(pro_id, pro_nome, pro_descricao, pro_marca, pro_preco, pro_data_validade, emp_id)
                 print("✓ Produto atualizado com sucesso!")
             except Exception as e:

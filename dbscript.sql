@@ -29,13 +29,6 @@ CREATE TABLE tb_usuario (
     usu_cargo VARCHAR(45) NOT NULL
 );
 
--- CATEGORIA
-CREATE TABLE tb_categoria (
-    cat_id INT AUTO_INCREMENT PRIMARY KEY,
-    cat_nome VARCHAR(255) NOT NULL,
-    cat_descricao VARCHAR(255)
-);
-
 -- PRODUTO
 CREATE TABLE tb_produto (
     pro_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -45,9 +38,7 @@ CREATE TABLE tb_produto (
     pro_preco DECIMAL(10,2) NOT NULL,
     pro_data_validade DATE NOT NULL,
     pro_emp_id INT NOT NULL,
-    pro_cat_id INT NOT NULL,
-    FOREIGN KEY (pro_emp_id) REFERENCES tb_empresa(emp_id),
-    FOREIGN KEY (pro_cat_id) REFERENCES tb_categoria(cat_id)
+    FOREIGN KEY (pro_emp_id) REFERENCES tb_empresa(emp_id)
 );
 
 -- ESTOQUE
