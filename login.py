@@ -14,7 +14,7 @@ def fazer_login():
     cursor.execute(sql, valores)
     resultado = cursor.fetchone()
 
-    cursor.close()
+    cursor.close( )
     conexao.close()
 
     if resultado:
